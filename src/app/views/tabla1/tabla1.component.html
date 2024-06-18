@@ -1,0 +1,28 @@
+<!-- tabla1.component.html -->
+
+<table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Correo</th>
+        <th>Videojuego</th>
+        <th>Precio</th>
+        <th>Total con descuento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of datos">
+        <td>{{ dato.Cliente }}</td>
+        <td>{{ dato.correo }}</td>
+        <td>{{ dato.videojuego }}</td>
+        <td>{{ dato.precio }}</td>
+        <td>{{ calcularTotal(dato.precio) }}</td>
+        <td>
+          <button (click)="aceptarRegistro(true)">Aceptar</button>
+          <button (click)="aceptarRegistro(false)">Denegar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
