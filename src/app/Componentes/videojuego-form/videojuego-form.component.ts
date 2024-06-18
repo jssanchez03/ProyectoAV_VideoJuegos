@@ -1,52 +1,71 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-videojuego-form',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  providers: [FormBuilder],
   templateUrl: './videojuego-form.component.html',
   styleUrl: './videojuego-form.component.css'
 })
-export class VideojuegoFormComponent {
-  videojuegos = [
-    { nombre: 'Mario Kart', precio: 50 },
-    { nombre: 'The Legend of Zelda', precio: 60 },
-    { nombre: 'Resident Evil 4', precio: 55 },
-    { nombre: 'Pokemon Sword & Shield', precio: 65 },
-    { nombre: 'Animal Crossing', precio: 45 }
-  ];
-  selectedVideojuego: string = ''; // Variable para almacenar el juego seleccionado
-  precioSeleccionado: number = 0; // Variable para almacenar el precio del juego seleccionado
-  codigoDescuento: string = ''; // Variable para almacenar el código de descuento
-  subtotal: number = 0; // Variable para almacenar el subtotal calculado
-  total: number = 0; // Variable para almacenar el total calculado
+export class VideojuegoFormComponent implements OnInit{
+  form: FormGroup;
+  precios: { [key: string]: number } = {
+    'Juego 1': 50,
+    'Juego 2': 60,
+    'Juego 3': 70,
+    'Juego 4': 80,
+    'Juego 5': 90
+  };
+  total: number = 0;
 
-  // Función para manejar el cambio de juego seleccionado
-  onChangeVideojuego() {
-    // Buscar el precio del juego seleccionado
-    const juego = this.videojuegos.find(juego => juego.nombre === this.selectedVideojuego);
-    if (juego) {
-      this.precioSeleccionado = juego.precio;
-      this.calcularTotales();
-    }
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      nombre: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      telefono: ['', Validators.required],
+      videojuego: ['', Validators.required],
+      precio: [{ value: '', disabled: true }, Validators.required],
+      codigo: [''],
+      subtotal: [{ value: '', disabled: true }, Validators.required],
+      total: [{ value: '', disabled: true }, Validators.required]
+    });
   }
 
-  // Función para calcular subtotal y total con descuento
-  calcularTotales() {
-    // Validar si hay código de descuento
-    let descuento = 0;
-    if (this.codigoDescuento === '17062024') { // Ejemplo de código de descuento
-      descuento = 0.15; // 15% de descuento
+  ngOnInit() {
+    this.form.get('videojuego')?.valueChanges.subscribe(value => {
+      const precio = this.precios[value] || 0;
+      this.form.get('precio')?.setValue(precio);
+      this.calcularTotal();
+    });
+
+    this.form.get('codigo')?.valueChanges.subscribe(() => {
+      this.calcularTotal();
+    });
+  }
+
+  calcularTotal() {
+    const precio = this.form.get('precio')?.value || 0;
+    let subtotal = precio;
+    const codigo = this.form.get('codigo')?.value;
+
+    if (codigo === '17062024') {
+      subtotal *= 0.9; // Descuento del 10%
     }
 
-    // Calcular subtotal y total
-    this.subtotal = this.precioSeleccionado;
-    this.total = this.subtotal - (this.subtotal * descuento);
+    this.total = subtotal;
+    this.form.get('subtotal')?.setValue(subtotal);
+    this.form.get('total')?.setValue(this.total);
   }
 
   onSubmit() {
-    alert('Formulario enviado con éxito');
+    if (this.form.valid) {
+      alert('Formulario enviado con éxito');
+      console.log(this.form.value);
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 }

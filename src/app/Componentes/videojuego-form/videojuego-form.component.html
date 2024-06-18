@@ -1,47 +1,54 @@
-
 <div class="form-container">
     <h2>VIDEOJUEGOS</h2>
-    <form (ngSubmit)="onSubmit()" #videojuegoForm="ngForm">
-        <div>
-            <label for="nombre">Nombre Cliente:</label>
-            <input type="text" id="nombre" name="nombre" ngModel>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nombre">Nombre Cliente:</label>
+        <input type="text" id="nombre" formControlName="nombre">
+        <div *ngIf="form.get('nombre')?.errors && form.get('nombre')?.touched">
+          <small *ngIf="form.get('nombre')?.hasError('required')">Este es un campo requerido</small>
         </div>
-        <div>
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" ngModel>
+      </div>
+      <div>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" formControlName="correo">
+        <div *ngIf="form.get('correo')?.errors && form.get('correo')?.touched">
+          <small *ngIf="form.get('correo')?.hasError('required')">Este es un campo requerido</small>
+          <small *ngIf="form.get('correo')?.hasError('email')">Debe ser un correo válido</small>
         </div>
-        <div>
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" ngModel>
+      </div>
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" formControlName="telefono">
+        <div *ngIf="form.get('telefono')?.errors && form.get('telefono')?.touched">
+          <small *ngIf="form.get('telefono')?.hasError('required')">Este es un campo requerido</small>
         </div>
-        <div>
-            <label for="videojuego">Videojuego:</label>
-            <select id="videojuego" name="videojuego" [(ngModel)]="selectedVideojuego" (change)="onChangeVideojuego()">
-                <option value="">Selecciona un videojuego</option>
-                <option *ngFor="let juego of videojuegos" [value]="juego.nombre">{{ juego.nombre }}</option>
-            </select>
+      </div>
+      <div>
+        <label for="videojuego">Videojuego:</label>
+        <select id="videojuego" formControlName="videojuego">
+          <option *ngFor="let juego of (precios | keyvalue)" [value]="juego.key">{{ juego.key }}</option>
+        </select>
+        <div *ngIf="form.get('videojuego')?.errors && form.get('videojuego')?.touched">
+          <small *ngIf="form.get('videojuego')?.hasError('required')">Este es un campo requerido</small>
         </div>
-
-        <div>
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" [(ngModel)]="precioSeleccionado" disabled>
-        </div>
-
-        <div>
-            <label for="codigo">Cod. Desc:</label>
-            <input type="text" id="codigo" name="codigo" [(ngModel)]="codigoDescuento" (change)="calcularTotales()">
-        </div>
-
-        <div>
-            <label for="subtotal">Subtotal:</label>
-            <input type="number" id="subtotal" name="subtotal" [(ngModel)]="subtotal" disabled>
-        </div>
-
-        <div>
-            <label for="total">Total:</label>
-            <input type="number" id="total" name="total" [(ngModel)]="total" disabled>
-        </div>
-
-        <button type="submit" (click)="onSubmit()">ENVIAR COMPRA</button>
+      </div>
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" formControlName="precio" readonly>
+      </div>
+      <div>
+        <label for="codigo">Cod. Desc:</label>
+        <input type="text" id="codigo" formControlName="codigo">
+      </div>
+      <div>
+        <label for="subtotal">Subtotal:</label>
+        <input type="number" id="subtotal" formControlName="subtotal" readonly>
+      </div>
+      <div>
+        <label for="total">Total:</label>
+        <input type="number" id="total" formControlName="total" readonly>
+      </div>
+      <button type="submit" [disabled]="form.invalid">ENVIAR COMPRA</button>
     </form>
-</div>
+  </div>
+  
