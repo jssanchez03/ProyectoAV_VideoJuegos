@@ -1,0 +1,47 @@
+
+<div class="form-container">
+    <h2>VIDEOJUEGOS</h2>
+    <form (ngSubmit)="onSubmit()" #videojuegoForm="ngForm">
+        <div>
+            <label for="nombre">Nombre Cliente:</label>
+            <input type="text" id="nombre" name="nombre" ngModel>
+        </div>
+        <div>
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" ngModel>
+        </div>
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" ngModel>
+        </div>
+        <div>
+            <label for="videojuego">Videojuego:</label>
+            <select id="videojuego" name="videojuego" [(ngModel)]="selectedVideojuego" (change)="onChangeVideojuego()">
+                <option value="">Selecciona un videojuego</option>
+                <option *ngFor="let juego of videojuegos" [value]="juego.nombre">{{ juego.nombre }}</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" [(ngModel)]="precioSeleccionado" disabled>
+        </div>
+
+        <div>
+            <label for="codigo">Cod. Desc:</label>
+            <input type="text" id="codigo" name="codigo" [(ngModel)]="codigoDescuento" (change)="calcularTotales()">
+        </div>
+
+        <div>
+            <label for="subtotal">Subtotal:</label>
+            <input type="number" id="subtotal" name="subtotal" [(ngModel)]="subtotal" disabled>
+        </div>
+
+        <div>
+            <label for="total">Total:</label>
+            <input type="number" id="total" name="total" [(ngModel)]="total" disabled>
+        </div>
+
+        <button type="submit" (click)="onSubmit()">ENVIAR COMPRA</button>
+    </form>
+</div>
