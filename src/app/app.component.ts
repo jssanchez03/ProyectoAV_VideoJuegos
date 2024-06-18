@@ -16,9 +16,9 @@ export class AppComponent {
   }
 
   goToTabla1() {
-    this.router.navigate(['/', 'Tabla1Component']);
+    this.router.navigate(['/', 'tabla1']);
   }
   goToTablafinal() {
-    this.router.navigate(['/', 'FinalDatatableComponent']);
+    this.router.navigate(['/', 'final-datatable']);
   }
 }
