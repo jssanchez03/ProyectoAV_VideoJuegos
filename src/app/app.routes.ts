@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
-import { Tabla1Component } from './tabla1/tabla1.component';
+import { Tabla1Component } from './views/tabla1/tabla1.component';
 import { NgModule } from '@angular/core';
-import { FinalDatatableComponent } from './final-datatable/final-datatable.component';
+import { FinalDatatableComponent } from './views/final-datatable/final-datatable.component';
 import { VoucherComponent } from './components/voucher/voucher.component';
 import { LoginComponent } from './components/login/login.component';
 
