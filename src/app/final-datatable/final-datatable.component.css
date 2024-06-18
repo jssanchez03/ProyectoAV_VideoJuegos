@@ -1,4 +1,8 @@
-/* tabla1.component.css */
+.table-responsive {
+  overflow-x: auto;
+  margin-left: 180px; /* Ajustar según el ancho de la barra de navegación */
+  padding: 20px;
+}
 
 table {
   width: 100%;
@@ -32,30 +36,53 @@ tbody td {
   text-align: left;
 }
 
+tbody td .foto {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+
 tbody td button {
   padding: 8px 12px;
   border: none;
-  background-color: #4CAF50;
-  color: white;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-tbody td button:hover {
+tbody td button.aceptar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tbody td button.aceptar:hover {
   background-color: #45a049;
 }
 
-tfoot {
-  font-weight: bold;
-}
-
-/* Estilo para el botón Denegar */
 tbody td button.denegar {
   background-color: #f44336;
+  color: white;
 }
 
-/* Estilo para el botón Aceptar */
-tbody td button.aceptar {
-  background-color: #4CAF50;
+tbody td button.denegar:hover {
+  background-color: #e53935;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table-responsive {
+    margin-left: 0; /* Ajustar según el ancho de la barra de navegación en dispositivos pequeños */
+    padding: 10px;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+  
+  thead th, tbody td {
+    padding: 8px 10px;
+  }
+  
+  tbody td button {
+    padding: 6px 10px;
+  }
+}
