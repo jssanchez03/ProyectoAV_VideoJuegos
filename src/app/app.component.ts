@@ -17,13 +17,5 @@ import { FinalDatatableComponent } from './views/final-datatable/final-datatable
 export class AppComponent {
   title = 'ProyectoAV_VideoJuegos';
 
-  constructor(private router: Router) {
-  }
-
-  goToTabla1() {
-    this.router.navigate(['/', 'tabla1']);
-  }
-  goToTablafinal() {
-    this.router.navigate(['/', 'final-datatable']);
-  }
+  
 }

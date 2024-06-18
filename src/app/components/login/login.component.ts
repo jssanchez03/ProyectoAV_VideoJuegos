@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  username: string = 'admin';
+  password: string = 'admin';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   onSubmit(): void {
     if (this.username && this.password) {
       console.log(`Usuario: ${this.username}, Contraseña: ${this.password}`);
+      this.router.navigate(['/', 'final-datatable']);
     } else {
       console.error('Formulario no válido');
     }
