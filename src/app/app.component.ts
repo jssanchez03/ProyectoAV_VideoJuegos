@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Tabla1Component } from './views/tabla1/tabla1.component';
-import { FinalDatatableComponent } from './views/final-datatable/final-datatable.component';
+import { Router, RouterOutlet } from '@angular/router';
+import { Tabla1Component } from './tabla1/tabla1.component';
+import { FinalDatatableComponent } from './final-datatable/final-datatable.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,4 +11,14 @@ import { FinalDatatableComponent } from './views/final-datatable/final-datatable
 })
 export class AppComponent {
   title = 'ProyectoAV_VideoJuegos';
+
+  constructor(private router: Router) {
+  }
+
+  goToTabla1() {
+    this.router.navigate(['/', 'Tabla1Component']);
+  }
+  goToTablafinal() {
+    this.router.navigate(['/', 'FinalDatatableComponent']);
+  }
 }
