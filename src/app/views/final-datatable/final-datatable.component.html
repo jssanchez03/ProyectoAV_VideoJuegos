@@ -22,8 +22,8 @@
         <td>{{ calcularTotal(dato.precio) }}</td>
         <td><img [src]="dato.foto" alt="Foto de {{ dato.Cliente }}" class="foto"></td>
         <td>
-          <button class="aceptar" (click)="aceptarRegistro(true)">Aceptar</button>
-          <button class="denegar" (click)="aceptarRegistro(false)">Denegar</button>
+          <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro()">Aceptar</button>
+          <button class="denegar" (click)="denegarRegistro()">Denegar</button>
         </td>
       </tr>
     </tbody>

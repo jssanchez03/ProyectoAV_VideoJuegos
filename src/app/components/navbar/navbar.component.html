@@ -5,21 +5,21 @@
   </div>
   <ul class="nav-links">
     <li>
-      <a routerLink="/tabla1">
+      <a (click)="goToTabla1()">
         <i class='bx bx-table'></i>
         <span class="link_name">Tabla1</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" routerLink="/tabla1">Tabla1</a></li>
+        <li><a class="link_name" (click)="goToTabla1()">Tabla1</a></li>
       </ul>
     </li>
     <li>
-      <a routerLink="/tablafinal">
+      <a (click)="goToTablafinal()">
         <i class='bx bx-table'></i>
         <span class="link_name">Tabla2</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" routerLink="/tablafinal">Tabla2</a></li>
+        <li><a class="link_name" (click)="goToTablafinal()">Tabla2</a></li>
       </ul>
     </li>
   </ul>
