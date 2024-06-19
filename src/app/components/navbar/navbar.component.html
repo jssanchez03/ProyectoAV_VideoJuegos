@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<div class="sidebar close">
+  <div class="logo-details">
+    <img src="" alt="">
+    <span class="logo_name">Game Galaxy</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a (click)="goToTabla1()">
+        <i class='bx bx-table'></i>
+        <span class="link_name">Tabla1</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" (click)="goToTabla1()">Tabla1</a></li>
+      </ul>
+    </li>
+    <li>
+      <a (click)="goToTablafinal()">
+        <i class='bx bx-table'></i>
+        <span class="link_name">Tabla2</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" (click)="goToTablafinal()">Tabla2</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

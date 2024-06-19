@@ -1,6 +1,6 @@
-<!-- tabla1.component.html -->
-
-<table>
+<app-navbar></app-navbar>
+<div class="table-responsive">
+  <table>
     <thead>
       <tr>
         <th>Cliente</th>
@@ -19,10 +19,10 @@
         <td>{{ dato.precio }}</td>
         <td>{{ calcularTotal(dato.precio) }}</td>
         <td>
-          <button (click)="aceptarRegistro(true)">Aceptar</button>
-          <button (click)="aceptarRegistro(false)">Denegar</button>
+          <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro()">Aceptar</button>
+          <button class="denegar" (click)="denegarRegistro()">Denegar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  
+</div>

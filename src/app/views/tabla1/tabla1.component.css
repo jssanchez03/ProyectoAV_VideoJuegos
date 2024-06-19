@@ -1,62 +1,89 @@
-/* tabla1.component.css */
+.table-responsive {
+  overflow-x: auto;
+  margin-left: 180px;
+  padding: 20px;
+}
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 14px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+thead th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  background-color: #4CAF50;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+tbody td {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+tbody td .foto {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+
+tbody td button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+tbody td button.aceptar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tbody td button.aceptar:hover {
+  background-color: #45a049;
+}
+
+tbody td button.denegar {
+  background-color: #f44336;
+  color: white;
+}
+
+tbody td button.denegar:hover {
+  background-color: #e53935;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table-responsive {
+    margin-left: 0; /* Ajustar según el ancho de la barra de navegación en dispositivos pequeños */
+    padding: 10px;
   }
-  
-  thead {
-    background-color: #f2f2f2;
+
+  table {
+    font-size: 12px;
   }
-  
-  thead th {
-    padding: 12px 15px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 1px solid #ddd;
+
+  thead th, tbody td {
+    padding: 8px 10px;
   }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  tbody tr:hover {
-    background-color: #f2f2f2;
-  }
-  
-  tbody td {
-    padding: 10px 15px;
-    text-align: left;
-  }
-  
+
   tbody td button {
-    padding: 8px 12px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 6px 10px;
   }
-  
-  tbody td button:hover {
-    background-color: #45a049;
-  }
-  
-  tfoot {
-    font-weight: bold;
-  }
-  
-  /* Estilo para el botón Denegar */
-  tbody td button.denegar {
-    background-color: #f44336;
-  }
-  
-  /* Estilo para el botón Aceptar */
-  tbody td button.aceptar {
-    background-color: #4CAF50;
-  }
-  
-  
+}

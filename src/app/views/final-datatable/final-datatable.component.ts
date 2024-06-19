@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-final-datatable',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './final-datatable.component.html',
   styleUrl: './final-datatable.component.css'
 })
@@ -24,13 +26,46 @@ export class FinalDatatableComponent  {
     return precio - (precio * 0.10);
   }
 
-  //Función para aceptar o denegar un registro
-  aceptarRegistro(aceptar: boolean){
-    if(aceptar){
-      alert('Registro aceptado');
-    }else{
-      alert('Registro denegado');
-    }
+  //Función para aceptar el registro
+  aceptarRegistro() {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, aceptar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Registro aceptado",
+          text: "El registro ha sido aceptado correctamente.",
+          icon: "success"
+        });
+      }
+    });
+  }
+
+  //Función para denegar el registro
+  denegarRegistro() {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, denegar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Registro denegado",
+          text: "El registro ha sido denegado correctamente.",
+          icon: "error"
+        });
+      }
+    });
   }
 
 }
