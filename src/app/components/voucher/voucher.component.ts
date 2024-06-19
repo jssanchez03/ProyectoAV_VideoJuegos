@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./voucher.component.css'],
 })
 export class VoucherComponent {
+  open = false;
   file: File | null = null;
 
   onFileChange(event: any) {
@@ -13,7 +14,7 @@ export class VoucherComponent {
   }
 
   onButtonClick() {
-    // Aquí puedes procesar el archivo como desees.
     console.log(this.file);
+    this.open = false;
   }
 }
