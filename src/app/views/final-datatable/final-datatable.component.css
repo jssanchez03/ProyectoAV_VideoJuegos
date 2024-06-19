@@ -1,3 +1,7 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -27,12 +31,14 @@ body {
   text-align: center;
   color: #4CAF50;
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
 header h1 {
-  font-size: 48px;
+  font-size: 75px;
   color: #4CAF50;
   margin-bottom: 20px;
+  font-family: "Jaro", sans-serif;
 }
 
 header p {

@@ -45,6 +45,8 @@ body {
 
 .logo-container {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
