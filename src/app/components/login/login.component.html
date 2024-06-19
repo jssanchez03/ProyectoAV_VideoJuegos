@@ -22,7 +22,7 @@
             usernameModel.invalid &&
             (usernameModel.dirty || usernameModel.touched)
           "
-          class="alert"
+          class="alert alert-danger"
         >
           <div *ngIf="usernameModel.errors?.['required']">
             El usuario es requerido.
@@ -49,7 +49,7 @@
             passwordModel.invalid &&
             (passwordModel.dirty || passwordModel.touched)
           "
-          class="alert"
+          class="alert alert-danger"
         >
           <div *ngIf="passwordModel.errors?.['required']">
             La contraseña es requerida.
@@ -60,6 +60,9 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Ingresar</button>
+      <div *ngIf="loginFailed" class="alert alert-danger mt-3">
+        Usuario o contraseña incorrectos.
+      </div>
     </form>
   </div>
 </div>

@@ -1,25 +1,40 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent  {
+export class LoginComponent {
   username: string = '';
   password: string = '';
+  loginFailed: boolean = false;
+
+  users = [
+    { username: 'usuario1', password: 'contraseña1' },
+    { username: 'usuario2', password: 'contraseña2' },
+    { username: 'usuario3', password: 'contraseña3' },
+  ];
 
   constructor(private router: Router) {}
 
   onSubmit(): void {
     if (this.username && this.password) {
-      console.log(`Usuario: ${this.username}, Contraseña: ${this.password}`);
-      this.router.navigate(['/', 'tabla1']);
+      const user = this.users.find(
+        (u) => u.username === this.username && u.password === this.password
+      );
+      if (user) {
+        console.log(`Usuario: ${this.username}, Contraseña: ${this.password}`);
+        this.router.navigate(['/', 'tabla1']);
+      } else {
+        this.loginFailed = true;
+        console.error('Usuario o contraseña incorrectos');
+      }
     } else {
       console.error('Formulario no válido');
     }
