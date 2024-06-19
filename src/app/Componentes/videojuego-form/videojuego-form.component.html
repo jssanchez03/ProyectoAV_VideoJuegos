@@ -17,8 +17,8 @@
       <div *ngIf="form.get('correo')?.errors && form.get('correo')?.touched" class="error-message">
         <small *ngIf="form.get('correo')?.hasError('required')">Este es un campo requerido</small>
         <small *ngIf="form.get('correo')?.hasError('email')">Debe ser un correo válido</small>
-        <small *ngIf="form.get('correo')?.hasError('minlength')">Debe tener al menos 15 caracteres</small>
-        <small *ngIf="form.get('correo')?.hasError('maxlength')">No puede tener más de 30 caracteres</small>
+        <small *ngIf="form.get('correo')?.hasError('minlength')">Debe tener al menos 10 caracteres</small>
+        <small *ngIf="form.get('correo')?.hasError('maxlength')">No puede tener más de 50 caracteres</small>
       </div>
     </div>
     <div class="form-group">
