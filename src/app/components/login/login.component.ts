@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent  {
   username: string = 'admin';
   password: string = 'admin';
 
@@ -19,7 +19,7 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.username && this.password) {
       console.log(`Usuario: ${this.username}, Contraseña: ${this.password}`);
-      this.router.navigate(['/', 'final-datatable']);
+      this.router.navigate(['/', 'tabla1']);
     } else {
       console.error('Formulario no válido');
     }
