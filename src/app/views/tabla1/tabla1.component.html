@@ -1,7 +1,16 @@
 <app-navbar></app-navbar>
+
+<div class="landing-page">
+  <header class="table-responsive">
+    <h1>Bienvenidos a GameStore</h1>
+    <p>Tu tienda de videojuegos favorita. Encuentra los mejores títulos al mejor precio.</p>
+  </header>
+</div>
+
 <div class="table-responsive">
-  <table>
-    <thead>
+  <h2>Detalle de Compra</h2>
+  <p-table [value]="datos" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
       <tr>
         <th>Cliente</th>
         <th>Correo</th>
@@ -10,19 +19,19 @@
         <th>Total con descuento</th>
         <th>Acciones</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let dato of datos">
+    </ng-template>
+    <ng-template pTemplate="body" let-dato>
+      <tr>
         <td>{{ dato.Cliente }}</td>
         <td>{{ dato.correo }}</td>
         <td>{{ dato.videojuego }}</td>
-        <td>{{ dato.precio }}</td>
-        <td>{{ calcularTotal(dato.precio) }}</td>
+        <td>${{ dato.precio }}</td>
+        <td>${{ calcularTotal(dato.precio) }}</td>
         <td>
           <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro()">Aceptar</button>
           <button class="denegar" (click)="denegarRegistro()">Denegar</button>
         </td>
       </tr>
-    </tbody>
-  </table>
+    </ng-template>
+  </p-table>
 </div>

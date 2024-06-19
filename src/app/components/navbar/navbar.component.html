@@ -1,26 +1,35 @@
 <div class="sidebar close">
   <div class="logo-details">
-    <img src="" alt="">
-    <span class="logo_name">Game Galaxy</span>
+    <img src="/logo.png" alt="" width="100px">
+    <span class="logo_name">GAME GALAXY</span>
   </div>
   <ul class="nav-links">
     <li>
       <a (click)="goToTabla1()">
         <i class='bx bx-table'></i>
-        <span class="link_name">Tabla1</span>
+        <span class="link_name">Detalle</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" (click)="goToTabla1()">Tabla1</a></li>
+        <li><a class="link_name" (click)="goToTabla1()">Detalle</a></li>
       </ul>
     </li>
     <li>
       <a (click)="goToTablafinal()">
-        <i class='bx bx-table'></i>
-        <span class="link_name">Tabla2</span>
+        <i class='bx bx-store'></i>
+        <span class="link_name">Fin de compra</span>
       </a>
       <ul class="sub-menu blank">
-        <li><a class="link_name" (click)="goToTablafinal()">Tabla2</a></li>
+        <li><a class="link_name" (click)="goToTablafinal()">Fin de compra</a></li>
       </ul>
     </li>
   </ul>
+
+  <!-- Logos de redes sociales -->
+  <div class="profile-details">
+    <div class="social-icons">
+      <a href="#"><i class="bx bxl-facebook"></i></a>
+      <a href="#"><i class="bx bxl-twitter"></i></a>
+      <a href="#"><i class="bx bxl-instagram"></i></a>
+    </div>
+  </div>
 </div>

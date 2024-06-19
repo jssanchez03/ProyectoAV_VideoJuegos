@@ -1,8 +1,14 @@
 <app-navbar></app-navbar>
-
+<div class="landing-page">
+  <header class="table-responsive">
+    <h1>Bienvenidos a GameStore</h1>
+    <p>Tu tienda de videojuegos favorita. Encuentra los mejores títulos al mejor precio.</p>
+  </header>
+</div>
 <div class="table-responsive">
-  <table>
-    <thead>
+  <h2>Comprobación de Compra</h2>
+  <p-table [value]="datos" [rows]="5" [paginator]="true" [rowsPerPageOptions]="[5, 10, 20]" [globalFilterFields]="['Cliente', 'correo', 'videojuego', 'precio']">
+    <ng-template pTemplate="header">
       <tr>
         <th>Cliente</th>
         <th>Correo</th>
@@ -12,20 +18,26 @@
         <th>Foto</th>
         <th>Acciones</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let dato of datos">
+    </ng-template>
+    <ng-template pTemplate="body" let-dato>
+      <tr>
         <td>{{ dato.Cliente }}</td>
         <td>{{ dato.correo }}</td>
         <td>{{ dato.videojuego }}</td>
-        <td>{{ dato.precio }}</td>
-        <td>{{ calcularTotal(dato.precio) }}</td>
-        <td><img [src]="dato.foto" alt="Foto de {{ dato.Cliente }}" class="foto"></td>
+        <td>${{ dato.precio }}</td>
+        <td>${{ calcularTotal(dato.precio) }}</td>
         <td>
-          <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro()">Aceptar</button>
+          <img [src]="dato.foto" alt="Foto de {{ dato.Cliente }}" class="foto" (click)="showModal(dato.foto)">
+        </td>
+        <td>
+          <button class="aceptar" (click)="aceptarRegistro()">Aceptar</button>
           <button class="denegar" (click)="denegarRegistro()">Denegar</button>
         </td>
       </tr>
-    </tbody>
-  </table>
+    </ng-template>
+  </p-table>
 </div>
+
+<p-dialog header="Vista previa de la imagen" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}">
+  <img [src]="selectedImage" alt="Vista previa" style="width: 100%;">
+</p-dialog>

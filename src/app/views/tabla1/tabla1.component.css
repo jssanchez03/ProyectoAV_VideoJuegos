@@ -1,89 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #2c2c2c; /* Fondo gris oscuro */
+  color: #ffffff;
+}
+
+.landing-page {
+  background: #1d1b31;
+  padding: 50px 0;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
 .table-responsive {
   overflow-x: auto;
   margin-left: 180px;
   padding: 20px;
 }
 
-table {
+.table-responsive h2 {
+  text-align: center;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 48px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+header p {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+:host ::ng-deep .p-datatable {
   width: 100%;
-  border-collapse: collapse;
   margin: 20px 0;
   font-size: 14px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-thead {
-  background-color: #f2f2f2;
+:host ::ng-deep .p-datatable thead {
+  background-color: #4CAF50;
 }
 
-thead th {
+:host ::ng-deep .p-datatable th {
+  background-color: #4CAF50;
   padding: 12px 15px;
   text-align: left;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
-  background-color: #4CAF50;
+  color: #ffffff;
 }
 
-tbody tr:nth-child(even) {
+:host ::ng-deep .p-datatable tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-tbody tr:hover {
+:host ::ng-deep .p-datatable tbody tr:hover {
   background-color: #f2f2f2;
 }
 
-tbody td {
+:host ::ng-deep .p-datatable tbody td {
   padding: 10px 15px;
   text-align: left;
 }
 
-tbody td .foto {
+:host ::ng-deep .p-datatable .foto {
   width: 50px;
   height: auto;
   border-radius: 4px;
 }
 
-tbody td button {
+:host ::ng-deep .p-datatable .botones {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .p-datatable button {
   padding: 8px 12px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 10px;
 }
 
-tbody td button.aceptar {
+:host ::ng-deep .p-datatable button.aceptar {
   background-color: #4CAF50;
   color: white;
+  margin-right: 10px; /* Asegura que haya espacio entre los botones */
 }
 
-tbody td button.aceptar:hover {
+:host ::ng-deep .p-datatable button.aceptar:hover {
   background-color: #45a049;
 }
 
-tbody td button.denegar {
+:host ::ng-deep .p-datatable button.denegar {
   background-color: #f44336;
   color: white;
 }
 
-tbody td button.denegar:hover {
+:host ::ng-deep .p-datatable button.denegar:hover {
   background-color: #e53935;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .table-responsive {
-    margin-left: 0; /* Ajustar según el ancho de la barra de navegación en dispositivos pequeños */
-    padding: 10px;
-  }
-
-  table {
-    font-size: 12px;
-  }
-
-  thead th, tbody td {
-    padding: 8px 10px;
-  }
-
-  tbody td button {
-    padding: 6px 10px;
-  }
 }

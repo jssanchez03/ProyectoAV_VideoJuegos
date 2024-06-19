@@ -3,30 +3,56 @@ import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import Swal from 'sweetalert2';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-final-datatable',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NavbarComponent,
+    TableModule,
+    InputTextModule,
+    DialogModule, // Asegúrate de agregar DialogModule aquí
+    ButtonModule
+  ],
   templateUrl: './final-datatable.component.html',
   styleUrl: './final-datatable.component.css'
 })
-export class FinalDatatableComponent  {
+export class FinalDatatableComponent {
 
-  //Ingreso de datos de la tabla
+  // Ingreso de datos de la tabla
   @Input() datos: any[] = [
-    {Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio : 30, total: 30},
-    {Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio : 50, total: 50},
-    {Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio : 40, total: 40},
-    {Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio : 30, total: 30},
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 },
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 },
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 }
   ];
 
-  //Funcion para calcular el total con descuento del 10%
-  calcularTotal(precio: number){
+  displayModal: boolean = false;
+  selectedImage: string = '';
+
+  showModal(imageUrl: string) {
+    this.selectedImage = imageUrl;
+    this.displayModal = true;
+  }
+
+  calcularTotal(precio: number) {
     return precio - (precio * 0.10);
   }
 
-  //Función para aceptar el registro
   aceptarRegistro() {
     Swal.fire({
       title: "¿Estás seguro?",
@@ -47,7 +73,6 @@ export class FinalDatatableComponent  {
     });
   }
 
-  //Función para denegar el registro
   denegarRegistro() {
     Swal.fire({
       title: "¿Estás seguro?",
@@ -67,5 +92,4 @@ export class FinalDatatableComponent  {
       }
     });
   }
-
 }
