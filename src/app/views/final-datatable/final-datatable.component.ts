@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TableModule,
     InputTextModule,
     DialogModule,
-    ButtonModule,// Agregar esta línea
+    ButtonModule,
   ],
   templateUrl: './final-datatable.component.html',
   styleUrls: ['./final-datatable.component.css']
@@ -27,20 +27,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export class FinalDatatableComponent {
 
   @Input() datos: any[] = [
-    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
-    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
-    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
-    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 },
-    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
-    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
-    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
-    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 },
-    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30 },
-    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50 },
-    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40 },
-    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30 }
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50, estado: '' },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40, estado: '' },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' },
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50, estado: '' },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40, estado: '' },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' },
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, foto: '/comprobante.jpg', total: 50, estado: '' },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, foto: '/comprobante.jpg', total: 40, estado: '' },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, foto: '/comprobante.jpg', total: 30, estado: '' }
   ];
-
 
   displayModal: boolean = false;
   selectedImage: string = '';
@@ -58,7 +57,7 @@ export class FinalDatatableComponent {
     return precio - (precio * 0.10);
   }
 
-  aceptarRegistro() {
+  aceptarRegistro(index: number) {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -69,6 +68,7 @@ export class FinalDatatableComponent {
       confirmButtonText: "Sí, aceptar!"
     }).then((result) => {
       if (result.isConfirmed) {
+        this.datos[index].estado = 'aceptado';
         Swal.fire({
           title: "Registro aceptado",
           text: "El registro ha sido aceptado correctamente.",
@@ -78,7 +78,7 @@ export class FinalDatatableComponent {
     });
   }
 
-  denegarRegistro() {
+  denegarRegistro(index: number) {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -89,6 +89,7 @@ export class FinalDatatableComponent {
       confirmButtonText: "Sí, denegar!"
     }).then((result) => {
       if (result.isConfirmed) {
+        this.datos[index].estado = 'denegado';
         Swal.fire({
           title: "Registro denegado",
           text: "El registro ha sido denegado correctamente.",

@@ -11,24 +11,24 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [CommonModule, NavbarComponent, TableModule, InputTextModule, ButtonModule],
   templateUrl: './tabla1.component.html',
-  styleUrl: './tabla1.component.css'
+  styleUrls: ['./tabla1.component.css']
 })
 export class Tabla1Component  {
 
   @Input() datos: any[] = [
-    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, total: 30 },
-    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, total: 50 },
-    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, total: 40 },
-    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, total: 30 },
+    { Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio: 30, total: 30, estado: '' },
+    { Cliente: 'Ana Lopez', correo: 'analopez@gmail.com', videojuego: 'FIFA 21', precio: 50, total: 50, estado: '' },
+    { Cliente: 'Pedro Garcia', correo: 'pedrogarcia@gmail.com', videojuego: 'PES 21', precio: 40, total: 40, estado: '' },
+    { Cliente: 'Maria Martinez', correo: 'mariamartinez@gmail.com', videojuego: 'Call Of Duty', precio: 30, total: 30, estado: '' },
   ];
 
-  // Funcion para calcular el total con descuento del 10%
+  // Función para calcular el total con descuento del 10%
   calcularTotal(precio: number) {
     return precio - (precio * 0.10);
   }
 
   // Función para aceptar el registro
-  aceptarRegistro() {
+  aceptarRegistro(index: number) {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -39,6 +39,7 @@ export class Tabla1Component  {
       confirmButtonText: "Sí, aceptar!"
     }).then((result) => {
       if (result.isConfirmed) {
+        this.datos[index].estado = 'aceptado';
         Swal.fire({
           title: "Registro aceptado",
           text: "El registro ha sido aceptado correctamente.",
@@ -49,7 +50,7 @@ export class Tabla1Component  {
   }
 
   // Función para denegar el registro
-  denegarRegistro() {
+  denegarRegistro(index: number) {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -60,6 +61,7 @@ export class Tabla1Component  {
       confirmButtonText: "Sí, denegar!"
     }).then((result) => {
       if (result.isConfirmed) {
+        this.datos[index].estado = 'denegado';
         Swal.fire({
           title: "Registro denegado",
           text: "El registro ha sido denegado correctamente.",

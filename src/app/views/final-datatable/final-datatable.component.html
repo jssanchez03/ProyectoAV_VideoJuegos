@@ -16,10 +16,11 @@
         <th>Precio</th>
         <th>Total con descuento</th>
         <th>Foto</th>
+        <th>Estado</th>
         <th>Acciones</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-dato>
+    <ng-template pTemplate="body" let-dato let-rowIndex="rowIndex">
       <tr>
         <td>{{ dato.Cliente }}</td>
         <td>{{ dato.correo }}</td>
@@ -29,9 +30,12 @@
         <td>
           <img [src]="dato.foto" alt="Foto de {{ dato.Cliente }}" class="foto" (click)="showModal(dato.foto)">
         </td>
+        <td [ngClass]="{'estado-aceptado': dato.estado === 'aceptado', 'estado-denegado': dato.estado === 'denegado'}">
+          {{ dato.estado }}
+        </td>
         <td>
-          <button class="aceptar" (click)="aceptarRegistro()">Aceptar</button>
-          <button class="denegar" (click)="denegarRegistro()">Denegar</button>
+          <button class="aceptar" (click)="aceptarRegistro(rowIndex)">Aceptar</button>
+          <button class="denegar" (click)="denegarRegistro(rowIndex)">Denegar</button>
         </td>
       </tr>
     </ng-template>

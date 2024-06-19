@@ -191,3 +191,13 @@ header p {
 .show {
   display: block;
 }
+
+:host ::ng-deep .estado-aceptado {
+  color: green;
+  font-weight: bold;
+}
+
+:host ::ng-deep .estado-denegado {
+  color: red;
+  font-weight: bold;
+}

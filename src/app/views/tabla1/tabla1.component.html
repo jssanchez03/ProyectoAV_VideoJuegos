@@ -17,19 +17,23 @@
         <th>Videojuego</th>
         <th>Precio</th>
         <th>Total con descuento</th>
+        <th>Estado</th>
         <th>Acciones</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-dato>
+    <ng-template pTemplate="body" let-dato let-rowIndex="rowIndex">
       <tr>
         <td>{{ dato.Cliente }}</td>
         <td>{{ dato.correo }}</td>
         <td>{{ dato.videojuego }}</td>
         <td>${{ dato.precio }}</td>
         <td>${{ calcularTotal(dato.precio) }}</td>
+        <td [ngClass]="{'estado-aceptado': dato.estado === 'aceptado', 'estado-denegado': dato.estado === 'denegado'}">
+          {{ dato.estado }}
+        </td>
         <td>
-          <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro()">Aceptar</button>
-          <button class="denegar" (click)="denegarRegistro()">Denegar</button>
+          <button class="aceptar" style="margin-right: 10px;" (click)="aceptarRegistro(rowIndex)">Aceptar</button>
+          <button class="denegar" (click)="denegarRegistro(rowIndex)">Denegar</button>
         </td>
       </tr>
     </ng-template>
