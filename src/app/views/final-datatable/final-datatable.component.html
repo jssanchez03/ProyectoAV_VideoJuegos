@@ -38,6 +38,9 @@
   </p-table>
 </div>
 
-<p-dialog header="Vista previa de la imagen" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}">
-  <img [src]="selectedImage" alt="Vista previa" style="width: 100%;">
-</p-dialog>
+<!-- Custom Modal -->
+<div id="myModal" class="modal" [ngClass]="{'show': displayModal}" (click)="closeModal()">
+  <span class="close" (click)="closeModal()">&times;</span>
+  <img class="modal-content" id="img01" [src]="selectedImage">
+  <div id="caption">{{selectedImage}}</div>
+</div>

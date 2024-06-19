@@ -24,6 +24,4 @@ import { DialogModule } from 'primeng/dialog';
 })
 export class AppComponent {
   title = 'ProyectoAV_VideoJuegos';
-
-
 }
