@@ -1,11 +1,11 @@
 /* Google Fonts Import Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -50,11 +50,11 @@ body {
 }
 
 .logo {
-  max-width: 100px;
+  max-width: 130px;
 }
 
 h2 {
-  color: #4CAF50;
+  color: #4caf50;
   margin-bottom: 20px;
   font-size: 24px;
 }
@@ -75,12 +75,12 @@ h2 {
 }
 
 .form-control:focus {
-  border-color: #4CAF50;
+  border-color: #4caf50;
   outline: none;
 }
 
 .btn-primary {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -101,5 +101,97 @@ h2 {
 }
 
 label {
-  color: #4CAF50;
+  color: #4caf50;
+}
+.login-box {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.199);
+  width: 400px;
+  text-align: center;
+  animation: pulse-shadow 4s infinite, fade-in-scale 1s ease-out;
+}
+
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+}
+
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logo-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  animation: rotate 5s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login-box h1,
+.login-box p {
+  animation: color-shift 5s infinite;
+}
+
+@keyframes color-shift {
+  0% {
+    color: #ff0000;
+  }
+  25% {
+    color: #00ff00;
+  }
+  50% {
+    color: #0000ff;
+  }
+  75% {
+    color: #ff00ff;
+  }
+  100% {
+    color: #ff0000;
+  }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  background-image: url("/fondologin.jpeg");
+  background-size: cover;
+  background-position: center;
+  animation: fade-in 2s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
