@@ -1,6 +1,6 @@
 .table-responsive {
   overflow-x: auto;
-  margin-left: 180px; /* Ajustar según el ancho de la barra de navegación */
+  margin-left: 180px;
   padding: 20px;
 }
 
@@ -73,15 +73,15 @@ tbody td button.denegar:hover {
     margin-left: 0; /* Ajustar según el ancho de la barra de navegación en dispositivos pequeños */
     padding: 10px;
   }
-  
+
   table {
     font-size: 12px;
   }
-  
+
   thead th, tbody td {
     padding: 8px 10px;
   }
-  
+
   tbody td button {
     padding: 6px 10px;
   }

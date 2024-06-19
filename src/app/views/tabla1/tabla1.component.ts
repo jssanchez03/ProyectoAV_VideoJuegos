@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-tabla1',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './tabla1.component.html',
   styleUrl: './tabla1.component.css'
 })
 export class Tabla1Component {
-  
+
   //Ingreso de datos de la tabla
   @Input() datos: any[] = [
     {Cliente: 'Juan Perez', correo: 'perez@gmail.com', videojuego: 'GTA V0', precio : 30, total: 30},
